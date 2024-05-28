@@ -1,0 +1,24 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: blog-personal
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+
+  datasource:
+    url: jdbc:h2:mem:blogdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: sa
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    database: h2
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+    show-sql: true
