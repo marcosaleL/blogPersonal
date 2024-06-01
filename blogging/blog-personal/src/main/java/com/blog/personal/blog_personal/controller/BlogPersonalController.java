@@ -6,20 +6,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.blog.personal.blog_personal.model.entities.User;
-import com.blog.personal.blog_personal.service.BlogPersonalService;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.blog.personal.blog_personal.model.entities.UserEntity;
+import com.blog.personal.blog_personal.service.UserServiceInterface;
 
 @RestController
 @RequestMapping("api/v1")
 public class BlogPersonalController {
 
     @Autowired
-    private BlogPersonalService service;
+    private UserServiceInterface service;
     
     @PostMapping("/create")
-    public ResponseEntity<User> login(@RequestBody User user){
+    public ResponseEntity<UserEntity> login(@RequestBody UserEntity user){
         service.saveUser(user);
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
