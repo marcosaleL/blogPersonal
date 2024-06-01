@@ -13,10 +13,10 @@ import lombok.AllArgsConstructor;
 public class BlogPersonalService {
 
     @Autowired
-    private BlogPersonalRepository repository;
+    private final BlogPersonalRepository repository;
 
     public void saveUser(User user) {
         repository.save(user);
-    }
+    } 
 
 }
