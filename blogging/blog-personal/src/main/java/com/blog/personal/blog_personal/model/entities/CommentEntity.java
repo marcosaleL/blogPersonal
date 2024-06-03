@@ -32,7 +32,7 @@ public class CommentEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private String author;
+    private UserEntity author;
     
     @ManyToOne
     @JoinColumn(name = "article_id", nullable = false)

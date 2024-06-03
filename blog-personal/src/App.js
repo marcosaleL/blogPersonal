@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import Login from './Components/Login/login';
+import Login from './Components/Login/LoginComponent';
+import Article from './Components/Article/ArticleComponent';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Crear Usuario</h1>
         <Login type="large" />
+        <Article />
       </header>
     </div>
   );

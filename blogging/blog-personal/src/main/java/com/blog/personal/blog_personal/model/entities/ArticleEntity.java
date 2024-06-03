@@ -30,7 +30,7 @@ public class ArticleEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private String author;
+    private UserEntity author;
     
     private String dateOfPublish;
     

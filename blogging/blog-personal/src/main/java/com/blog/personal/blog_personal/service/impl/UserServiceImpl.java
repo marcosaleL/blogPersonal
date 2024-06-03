@@ -5,16 +5,18 @@ import org.springframework.stereotype.Service;
 
 import com.blog.personal.blog_personal.model.entities.UserEntity;
 import com.blog.personal.blog_personal.repository.UserRepository;
+import com.blog.personal.blog_personal.service.UserServiceInterface;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Service
-@AllArgsConstructor
-public class UserServiceImpl {
+@RequiredArgsConstructor
+public class UserServiceImpl implements UserServiceInterface {
 
     @Autowired
     private final UserRepository userRepository;
 
+    @Override
     public void saveUser(UserEntity user) {
         userRepository.save(user);
     }
