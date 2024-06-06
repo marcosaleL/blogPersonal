@@ -1,11 +1,11 @@
 import React from 'react';
+import styled from 'styled-components'
 
-import logo from './logo.svg';
 import './App.css';
 import Login from './Components/Login/LoginComponent';
 import Article from './Components/Article/ArticleComponent';
 import Spacer from './Components/Spacer/SpacerComponent';
-import styled from 'styled-components'
+import ArticleBar from './Components/ArticleBar/ArticleBarComponent';
 
 const AppUI = styled.div({
   display: 'grid',
@@ -13,19 +13,29 @@ const AppUI = styled.div({
 })
 
 function App() {
+
+  const article = {
+    title: "Article title",
+    subtitle: "Article author",
+    content: "Article content",
+    comments: "Article comments",
+    likes: "Article likes",
+    dislikes: "Article dislikes",
+    tags: "Article tags",
+  }
+
   return (
-    <div className="App">
+    <AppUI className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Spacer></Spacer>
+        <Spacer />
         <div>
           <Login type="large" />
-          <Article />
+          <Article article={article}/>
+          <ArticleBar />
         </div>
-        <Spacer></Spacer>
-
+        <Spacer />
       </header>
-    </div>
+    </AppUI>
   );
 }
 

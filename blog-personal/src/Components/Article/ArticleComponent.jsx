@@ -1,69 +1,76 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import React from "react";
-import styled from 'styled-components';
+import ArticleInfo from "../ArticleInfo/ArticleInfoComponent";
+import styled from "styled-components";
 
-//
-//Negro: #000000
-//Gris oscuro: #4A4A4A
-//Gris medio: #A0A0A0
-//Gris claro: #D0D0D0
-//Celeste oscuro: #6CA6CD
-//Celeste medio: #87CEEB
-//Celeste claro: #B0E0E6
-
-const TitleUI = styled.h1`
-    height: ${({ size }) => (size === 'large' ? '50px' : size === 'medium' ? '20px' : '10px')};
-    width: ${({ size }) => (size === 'large' ? '310px' : size === 'medium' ? '20vw' : '10vw')};
-    font-size: ${({ size }) => (size === 'large' ? '50px' : size === 'medium' ? '20px' : '10px')};
-    font-weight: bold;
-    margin: 20px 10px 20px 10px;
-    color: #4A4A4A;
-    border-radius: 50px;
-    text-shadow: 
-        1px 1px 0 #f36b39;
-`;
-
-
-const SubtitleUI = styled.h2`
-    height: ${({ size }) => (size === 'large' ? '30px' : size === 'medium' ? '20px' : '10px')};
-    width: ${({ size }) => (size === 'large' ? '310px' : size === 'medium' ? '20vw' : '10vw')};
-    font-size: ${({ size }) => (size === 'large' ? '30px' : size === 'medium' ? '20px' : '10px')};
-    font-weight: bold;
-    margin: 20px 10px 20px 10px;
-    display: flex;
-    justify-content: left;
-    color: #333333
-`;
-
-const ParagraphUI = styled.p`
-    height: ${({ size }) => (size === 'large' ? '510px' : size === 'medium' ? '20px' : '10px')};
-    width: ${({ size }) => (size === 'large' ? '260px' : size === 'medium' ? '20vw' : '10vw')};
-    font-size: ${({ size }) => (size === 'large' ? '15px' : size === 'medium' ? '20px' : '10px')};
-    font-weight: bold;
-    background-color: #333333;
-    border-radius: 50px;
-    padding: 25px;
-    color: #EEEEEE;
-    text-align: left; /* Aligns text to the left */
-`;
 const ArticleUI = styled.div`
     height: 650px;
     width: 350px;
-    background: linear-gradient(0deg, #004173 0%,  #000000 25%);
+    background: linear-gradient(0deg, #9ac6c5 0%, #000000 20%);
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 50px;
-    margin: 20px;
+    border: 1px #000000 solid;
 `;
-function Article({ props }) {
 
-    return (
+const TitleUI = styled.div`
+    height: 50px;
+    width: 310px;
+    font-size: 50px;
+    font-weight: bold;
+    margin: 20px 10px 20px 10px;
+    color: #360568;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+`;
+
+const SubtitleUI = styled.div`
+    height: 30px;
+    width: 310px;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px 10px 20px 10px;
+    display: flex;
+    justify-content: left;
+    color: #5b2a86;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+`;
+function Article({ article }) {
+    const [articleState, setArticleState] = useState({
+      title: "A Title",
+      subtitle: "A Subtitle",
+      comments: "",
+      content: "Exercitation sit commodo ullamco anim enim veniam ullamco ut magna eiusmod velit. Reprehenderit sit nisi reprehenderit officia ut pariatur laboris elit exercitation fugiat dolor proident mollit. Qui labore ipsum enim dolore duis in deserunt aliqua dolor dolore non ut.",
+    });
+
+    const [titleState, setTitleState] = useState("");
+    const [subtitleState, setSubtitleState] = useState("");
+  
+    useEffect(() => {
+      if (article) {
+        setTitleState(article.title);
+      }
+    }, [article]);
+  
+    useEffect(() => {
+      if (article) {
+        setSubtitleState(article.subtitle);
+      }
+    }, [article]);
+  
+    useEffect(() => {
+      if (article) {
+        setArticleState(article);
+      }
+    }, [article]);
+  
+    return (    
         <ArticleUI>
-            <TitleUI size="large">Article title</TitleUI>
-            <SubtitleUI size="large">Article subtitle</SubtitleUI>
-            <ParagraphUI size="large">Cillum sint nulla mollit enim id quis ut ullamco do voluptate.Reprehenderit sunt pariatur excepteur ut aute. Ad labore incididunt tempor anim. Laborum ullamco consectetur ipsum elit amet ad Lorem ullamco. Ipsum velit dolor aute cillum tempor ea elit amet est aliqua. Voluptate pariatur aute minim irure nostrud voluptate cillum.</ParagraphUI>
+            <TitleUI>{titleState}</TitleUI>
+            <SubtitleUI>{subtitleState}</SubtitleUI> 
+            <ArticleInfo content={articleState.content} comment={articleState.comments} />
         </ArticleUI>
     );
 }
-
 export default Article;
