@@ -15,22 +15,30 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @Entity
-@Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "email" }) })
+@Table(name = "user", uniqueConstraints = { @UniqueConstraint(columnNames = { "email" }) })
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class UserEntity {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nombre")
     private String name;
 
+    private String lastName;
+    
+    private String phone;
+    
     private String email;
-
+    
+    private String dateOfBirth;
+    
+    private String dateOfRegister;
+    
+    private String gender;
+    
     private String password;
-
-
+    
 }

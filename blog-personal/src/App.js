@@ -1,16 +1,41 @@
-import logo from './logo.svg';
+import React from 'react';
+import styled from 'styled-components'
+
 import './App.css';
-import Login from './Components/Login/login';
+import Login from './Components/Login/LoginComponent';
+import Article from './Components/Article/ArticleComponent';
+import Spacer from './Components/Spacer/SpacerComponent';
+import ArticleBar from './Components/ArticleBar/ArticleBarComponent';
+
+const AppUI = styled.div({
+  display: 'grid',
+  flexDirection: 'row',
+})
 
 function App() {
+
+  const article = {
+    title: "Article title",
+    subtitle: "Article author",
+    content: "Article content",
+    comments: "Article comments",
+    likes: "Article likes",
+    dislikes: "Article dislikes",
+    tags: "Article tags",
+  }
+
   return (
-    <div className="App">
+    <AppUI className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Crear Usuario</h1>
-        <Login type="large" />
+        <Spacer />
+        <div>
+          <Login type="large" />
+          <Article article={article}/>
+          <ArticleBar />
+        </div>
+        <Spacer />
       </header>
-    </div>
+    </AppUI>
   );
 }
 
