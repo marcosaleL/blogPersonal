@@ -16,7 +16,7 @@ function App() {
 
   const article = {
     title: "Article title",
-    subtitle: "Article author",
+    subtitle: "Article subtitle",
     content: "Article content",
     comments: "Article comments",
     likes: "Article likes",
