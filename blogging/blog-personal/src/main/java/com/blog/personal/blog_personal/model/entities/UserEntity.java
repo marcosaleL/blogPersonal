@@ -21,24 +21,15 @@ import lombok.NoArgsConstructor;
 public class UserEntity {
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
+    @Column(nullable = false)
     private String name;
 
-    private String lastName;
-    
-    private String phone;
-    
+    @Column(nullable = false, unique = true)
     private String email;
-    
-    private String dateOfBirth;
-    
-    private String dateOfRegister;
-    
-    private String gender;
-    
+
+    @Column(nullable = false)
     private String password;
-    
 }

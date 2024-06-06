@@ -1,5 +1,6 @@
 package com.blog.personal.blog_personal.model.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,7 +23,7 @@ public class ReactionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -36,8 +37,9 @@ public class ReactionEntity {
     @JoinColumn(name = "comment_id")
     private CommentEntity comment;
 
-    private Boolean like;
+    @Column(nullable = false)
+    private boolean like;
 
-    private Boolean dislike;
-
+    @Column(nullable = false)
+    private boolean dislike;
 }

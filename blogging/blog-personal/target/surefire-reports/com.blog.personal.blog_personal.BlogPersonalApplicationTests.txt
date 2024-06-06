@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.blog.personal.blog_personal.BlogPersonalApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.789 s -- in com.blog.personal.blog_personal.BlogPersonalApplicationTests
