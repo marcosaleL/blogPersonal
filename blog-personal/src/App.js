@@ -1,41 +1,27 @@
-import React from 'react';
-import styled from 'styled-components'
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import './App.css';
-import Login from './Components/Login/LoginComponent';
-import Article from './Components/Article/ArticleComponent';
-import Spacer from './Components/Spacer/SpacerComponent';
-import ArticleBar from './Components/ArticleBar/ArticleBarComponent';
-
-const AppUI = styled.div({
-  display: 'grid',
-  flexDirection: 'row',
-})
+import Home from "./Pages/Home";
+import LogIn from "./Pages/Login";
+import SignUp from "./Pages/SignUp";
+import CreateItem from "./Pages/CreateItem";
+import Cart from "./Pages/Cart";
+import Checkout from "./Pages/Checkout";
 
 function App() {
-
-  const article = {
-    title: "Article title",
-    subtitle: "Article subtitle",
-    content: "Article content",
-    comments: "Article comments",
-    likes: "Article likes",
-    dislikes: "Article dislikes",
-    tags: "Article tags",
-  }
-
   return (
-    <AppUI className="App">
-      <header className="App-header">
-        <Spacer />
-        <div>
-          <Login type="large" />
-          <Article article={article}/>
-          <ArticleBar />
-        </div>
-        <Spacer />
-      </header>
-    </AppUI>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/sign-in" element={<SignUp />} />
+          <Route path="/create-item" element={<CreateItem />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
