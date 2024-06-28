@@ -19,14 +19,15 @@ public class BlogPersonalController {
     private UserServiceInterface service;
     
     @PostMapping("/signUp")
-    public ResponseEntity<ResponseSignUpDTO> signUp(@RequestBody RequestSignUpDto user){
-        service.saveUser(user);
-        return ResponseEntity.status(HttpStatus.OK).body(user);
+    public ResponseEntity<ResponseSignUpDto> signUp(@RequestBody RequestSignUpDto user){
+        var response = service.signUp(user);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody UserEntity user){
-        return ResponseEntity.status(HttpStatus.OK).body("Estas logueado")
+    public ResponseEntity<ResponseLoginDto> login(@RequestBody RequestLoginDto user){
+        var response = service.login(user);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
 }

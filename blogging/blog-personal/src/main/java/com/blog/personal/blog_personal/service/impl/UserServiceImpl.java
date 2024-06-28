@@ -17,8 +17,22 @@ public class UserServiceImpl implements UserServiceInterface {
     private final UserRepository userRepository;
 
     @Override
-    public void saveUser(UserEntity user) {
-        userRepository.save(user);
+    public ResponseSignUpDto signUp(RequestSignUpDTO requestSignUpDTO) {
+        var userEntity = UserEntity.builder().name(user.getName()).email(user.getEmail()).password(user.getPassword()).build();
+        var savedUser = userRepository.save(userEntity);
+        return ResponseSignUpDto.builder().id(savedUser.getId().name(savedUser.getName()).email(savedUser.getEmail()).isActive(true).build(); 
+    }
+
+    @Override
+    public ResponseLoginDto signUp(RequestLoginDto requestLoginDto) {
+        if(userRepository.existsByEmail(requestLoginDto.getEmail()))
+            var savedUser = userRepository.findByEmail(requestLoginDto.getEmail());
+            if(savedUser.getPassword() == requestLoginDto.getPassword())
+                return response = new ResponseLoginDto("Welcome");
+            else
+                return response = new ResponseLoginDto("Password incorrect");
+        else
+            return response = new ResponseLoginDto("User incorrect");
     }
 
 }

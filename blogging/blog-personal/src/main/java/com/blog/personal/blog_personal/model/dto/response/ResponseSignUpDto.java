@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResponseSignUpDTO {
+public class ResponseSignUpDto {
 
     private Long userId;
     private String name;
